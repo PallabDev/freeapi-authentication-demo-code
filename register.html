@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- // build a register page email password role or username
+    /*
+
+    {
+  "email": "user.email@domain.com",
+  "password": "test@123",
+  "role": "ADMIN",
+  "username": "doejohn"
+}*/ -->
+
+    <div class="container">
+        <h1>Register Page</h1>
+        <form id="registerForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <select id="role" required>
+                <option value="">Select Role</option>
+                <option value="USER">USER</option>
+                <option value="ADMIN">ADMIN</option>
+            </select>
+            <button type="submit">Register</button>
+            <!-- add a link for login page -->
+            <p>Already have an account? <a href="login.html">Login here</a></p>
+        </form>
+    </div>
+
+    <script>
+        const registerForm = document.getElementById("registerForm");
+        registerForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const role = document.getElementById("role").value;
+            if (username && email && password && role) {
+                fetch('https://api.freeapi.app/api/v1/users/register', {
+                    method: 'POST',
+                    headers: {
+                        'accept': 'application/json',
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password,
+                        role: role,
+                        username: username
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        alert("User registered successfully");
+                        window.location.href = "login.html";
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }
+        })
+    </script>
+
+</body>
+
+</html>
