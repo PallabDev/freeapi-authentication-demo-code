@@ -125,7 +125,6 @@ Using a local server is recommended so navigation between pages works more relia
 
 To fully match the assignment requirements, the following can still be added later:
 
-- Logout button connected to the logout API
 - Better success and error messages in the UI
 - Loading states while requests are in progress
 - Cleaner styling with CSS or Tailwind
@@ -141,14 +140,3 @@ This project helps practice:
 - protecting routes/pages
 - updating UI based on login state
 - working with a third-party authentication API
-
-## Submission
-
-For final submission, include:
-
-- Live hosted project link
-- Public GitHub repository link
-
-## Author
-
-Built as a frontend authentication practice project using the FreeAPI Authentication Module.
